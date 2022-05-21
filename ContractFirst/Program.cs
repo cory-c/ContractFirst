@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.Extensions.FileProviders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,19 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+// Configure app to serve ServiceDefinition.yaml static swagger-ui
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var provider = new FileExtensionContentTypeProvider();
+provider.Mappings[".yaml"] = "text/yaml";
+app.UseStaticFiles(new StaticFileOptions
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
+    ContentTypeProvider = provider
+});
 app.UseAuthorization();
 
 app.MapControllers();

@@ -30,7 +30,7 @@
       "parameterDictionaryType": "System.Collections.Generic.IDictionary",
       "responseArrayType": "System.Collections.Generic.IEnumerable",
       "responseDictionaryType": "System.Collections.Generic.IDictionary",
-      "wrapResponses": true,
+      "wrapResponses": false,
       "wrapResponseMethods": [],
       "generateResponseClasses": true,
       "responseClass": "SwaggerResponse",
