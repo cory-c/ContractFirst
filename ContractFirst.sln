@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractFirst", "ContractFirst\ContractFirst.csproj", "{E67E1E25-0DD8-4BB1-A440-9C8C9CB02C0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractFirst.Api", "ContractFirst.Api\ContractFirst.Api.csproj", "{E67E1E25-0DD8-4BB1-A440-9C8C9CB02C0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractFirst.Api.Tests.Unit", "ContractFirst.Api.Tests.Unit\ContractFirst.Api.Tests.Unit.csproj", "{9154F8AC-FF09-4210-8B4F-8DA028F13D23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractFirst.Api.Tests.Integration", "ContractFirst.Api.Tests.Integration\ContractFirst.Api.Tests.Integration.csproj", "{55A3F42C-9005-447F-A984-C5A56A83A864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{E67E1E25-0DD8-4BB1-A440-9C8C9CB02C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E67E1E25-0DD8-4BB1-A440-9C8C9CB02C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E67E1E25-0DD8-4BB1-A440-9C8C9CB02C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9154F8AC-FF09-4210-8B4F-8DA028F13D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9154F8AC-FF09-4210-8B4F-8DA028F13D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9154F8AC-FF09-4210-8B4F-8DA028F13D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9154F8AC-FF09-4210-8B4F-8DA028F13D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A3F42C-9005-447F-A984-C5A56A83A864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A3F42C-9005-447F-A984-C5A56A83A864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A3F42C-9005-447F-A984-C5A56A83A864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A3F42C-9005-447F-A984-C5A56A83A864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
