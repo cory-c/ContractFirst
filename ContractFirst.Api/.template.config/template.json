@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Cory Coellen",
+  "description": "Custom Contract first web API template",
+  "classifications": [ "Web" ],
+  "identity": "Custom.WebApi",
+  "name": "Custom ASP.NET Core Web Api",
+  "shortName": "contractfirstwebapi",
+  "sourceName": "ContractFirst.WebApi", 
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+}

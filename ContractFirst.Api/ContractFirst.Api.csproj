@@ -35,5 +35,9 @@
       <Folder Include="Controllers" />
       <Folder Include="Extensions" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include=".template.config\template.json" />
+    </ItemGroup>
 
 </Project>
