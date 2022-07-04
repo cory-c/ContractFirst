@@ -11,7 +11,22 @@ Once the ConrollerDelegates.cs file has been generated an implementation will ne
 
 ### Configuration 
 
+### Running Locally
+Pre-Reqs, the following software needs to be installed:
+
+Java JDK, 
+Docker, 
+Git
+
+Steps to run:
+
+1. Build Project
+2. Open terminal, cd into /Resources/Config directory
+3. Run setup-config.sh, pass -l local file location of config or -r remote github repo
+`./setup-config.sh -r https://github.com/cory-c/TestConfig.git`
+
 ### Service Lookup
+Coming soon
 
 ### TODO
 1. Get options monitor config working
