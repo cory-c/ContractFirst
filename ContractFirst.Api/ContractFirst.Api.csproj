@@ -15,11 +15,11 @@
         <Message Text="Project Directory = $(MSBuildProjectDirectory)" />
     </Target>
 
-    <Target Name="CopyServiceDefinitionToRoot" BeforeTargets="Build">
+    <Target Name="CopyServiceDefinitionToRoot" BeforeTargets="BeforeBuild">
         <Copy SourceFiles="$(MSBuildThisFileDirectory)\ServiceDefinition.yaml" DestinationFiles="$(MSBuildProjectDirectory)\wwwroot\swagger\ServiceDefinition.yaml" />
     </Target> 
         
-    <Target Name="NSwag" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Debug' ">
+    <Target Name="NSwag" BeforeTargets="BeforeBuild" Condition=" '$(Configuration)' == 'Debug' ">
         <Exec WorkingDirectory="$(ProjectDir)" Command="$(NSwagExe_Net60) run nswag.json /variables:Configuration=$(Configuration)" />
     </Target>
     
@@ -33,7 +33,6 @@
     </ItemGroup>
     
     <ItemGroup>
-      <Folder Include="Controllers" />
       <Folder Include="Extensions" />
     </ItemGroup>
     

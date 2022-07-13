@@ -43,10 +43,7 @@ if [ -z "$REMOTE_CONFIG" ]; then
 else 
    docker run --publish 8888:8888 steeltoeoss/config-server --spring.cloud.config.server.git.uri="$REMOTE_CONFIG"
 fi
-
-# update directions
-
-# demo monitor / snapshot behavior 
+ 
 
 
 
