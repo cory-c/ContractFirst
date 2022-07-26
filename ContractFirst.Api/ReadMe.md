@@ -11,12 +11,13 @@ https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates
 
 
 ### Installation
+From the ContractFirst.Api directory run: the following command:
 ```
-dotnet new --install ContractFirst.WebApi
+dotnet new --install ./
 ```
 ### Removing Template
 ```
-dotnet new --uninstall ContractFirst.WebApi
+dotnet new --uninstall cf-apils
 ```
 ### Create a project using template
 ```

@@ -4,9 +4,9 @@
   "description": "Custom Contract first web API template",
   "classifications": [ "Web" ],
   "identity": "coellen.contract.first.api.template",
-  "name": "Custom ASP.NET Core Web Api",
+  "name": "Contract First ASP.NET Core Web Api",
   "shortName": "cf-api",
-  "sourceName": "ContractFirst.WebApi", 
+  "sourceName": "ContractFirst.Api", 
   "tags": {
     "language": "C#",
     "type": "project"
