@@ -1,4 +1,4 @@
-#Contract First API Template
+# Contract First API Template
 
 ## API Generation 
 The template project enforces that the API is defined in the OpenAPI specification before code is implemented and ensures the contract is always up to date. Changing the exposed interface / contract requires updating the ServiceDefinition.yaml file first. At build time, the project reads from the ServiceDefinition.yaml file in the project root then generates request models, response models, interfaces and controller delegates for each endpoint in a single file called ControllerDelegates.cs. This file is not meant to be checked in, any changes in the ServiceDefinition.yaml are dynamically updated at build time. 
