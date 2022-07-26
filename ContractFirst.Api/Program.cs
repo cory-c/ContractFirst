@@ -1,5 +1,7 @@
 using ContractFirst.Configuration;
+using ContractFirst.Controllers;
 using ContractFirst.HealthCheck;
+using Example.Controllers;
 using Microsoft.AspNetCore.StaticFiles;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 
@@ -24,11 +26,15 @@ builder.Services.AddOptions<AppConfig>()
     .ValidateDataAnnotations() //TODO add validations
     .ValidateOnStart(); // TODO create sample controller with IOptionsMonitor
 
+builder.Services.AddControllers();
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHealthChecks()
     .AddCheck<SampleHealthCheck>("Sample Health Check");
+
+builder.Services.AddScoped<IPetController, PetControllerImp>();
 
 // Configure app to serve ServiceDefinition.yaml static file on swagger-ui
 var app = builder.Build();

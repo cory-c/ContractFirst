@@ -3,12 +3,13 @@
   "author": "Cory Coellen",
   "description": "Custom Contract first web API template",
   "classifications": [ "Web" ],
-  "identity": "Custom.WebApi",
+  "identity": "coellen.contract.first.api.template",
   "name": "Custom ASP.NET Core Web Api",
-  "shortName": "contractfirstwebapi",
+  "shortName": "cf-api",
   "sourceName": "ContractFirst.WebApi", 
   "tags": {
     "language": "C#",
     "type": "project"
   },
+  "sourceName": "ContractFirst"
 }
