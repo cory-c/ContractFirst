@@ -1,11 +1,46 @@
+---
+title: Projects
+toc: true
+pannel_includes:
+- toc
+  icon: fas fa-info-circle
+  order: 2
+  mermaid: true
+---
 # Contract First API Template
 
-## API Generation 
-The template project enforces that the API is defined in the OpenAPI specification before code is implemented and ensures the contract is always up to date. Changing the exposed interface / contract requires updating the ServiceDefinition.yaml file first. At build time, the project reads from the ServiceDefinition.yaml file in the project root then generates request models, response models, interfaces and controller delegates for each endpoint in a single file called ControllerDelegates.cs. This file is not meant to be checked in, any changes in the ServiceDefinition.yaml are dynamically updated at build time. 
+## API Generation
+The template project enforces that the API is defined in the OpenAPI specification before code is implemented and ensures the contract is always up to date. Changing the exposed interface / contract requires updating the ServiceDefinition.yaml file first. At build time, the project reads from the ServiceDefinition.yaml file in the project root then generates request models, response models, interfaces and controller delegates for each endpoint in a single file called ControllerDelegates.cs. This file is not meant to be checked in, any changes in the ServiceDefinition.yaml are dynamically updated at build time.
 
-## Using the Template
+## Development Process
 
-The template can be used either by the dotnet CLI (dotnet new) or Visual Studio to create an new API project. 
+### New API
+```mermaid
+graph LR
+A(Write API <br>Contract)
+--> B(New Template <br>Project)
+--> C(Install Template <br>Project)
+--> D(Copy Contract<br>into project)
+--> E(Build <br> Project)
+--> |Delegates / Models <br>Generated| F(Implement <br>Interfaces)
+E --> |Contract<br> copied into<br>static SwaggerUI dist| F(Implement <br>Interfaces)
+--> G(Run Application)
+```
+
+### Updating an existing API
+
+```mermaid
+graph LR
+A(Update API <br>Contract)
+A --> B(Build <br> Project)
+B --> |Delegates / Models <br>Generated| C(Implement Interfaces <br> or resolve build <br> errors)
+B --> |Contract<br> copied into<br>static SwaggerUI dist| C(Implement <br>Interfaces)
+C --> D(Run Application)
+```
+
+## Installing the Template
+
+The template can be used either by the dotnet CLI (dotnet new) or Visual Studio to create an new API project.
 ### General Info
 https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates
 
@@ -24,9 +59,9 @@ dotnet new --uninstall cf-apils
 dotnet new ContractFirst.WebApi
 ```
 
-## Implementation 
+## Implementation
 
-Once the ConrollerDelegates.cs file has been generated an implementation class needs to be provided and registered for each Interface. Take the following generated class, note the IPetController interface 
+Once the ConrollerDelegates.cs file has been generated an implementation class needs to be provided and registered for each Interface. Take the following generated class, note the IPetController interface
 
 ```c#
 
@@ -38,12 +73,12 @@ public partial class PetController : Microsoft.AspNetCore.Mvc.ControllerBase
      {
          _implementation = implementation;
      }
-     
+
      // truncated ....
 
 }
 ```
-Add a new class that implements all the methods defined in the IPetController interface. 
+Add a new class that implements all the methods defined in the IPetController interface.
 
 ```c#
 public class PetControllerImp : IPetConroller {
@@ -61,7 +96,7 @@ builder.Services.AddScoped<IPetController, PetControllerImp>();
 ## Swagger UI
 Included in the API project is a local distrobution of [Swagger UI](https://github.com/swagger-api/swagger-ui) that is served as static content. On every build a copy of the ServiceDefinition.yaml is moved into the /wwwroot directory so any changes the the ServiceDefinition.yaml are reflected in the swagger page with running the application. The swagger page is availible at /swagger/index.html
 
-## Configuration 
+## Configuration
 
 ## Management Endpoints
 
@@ -82,7 +117,7 @@ Pre-Reqs, the following software needs to be installed: Java JDK, Docker, Git
 
 **Local**
 
-`./setup-config.sh -r https://github.com/cory-c/TestConfig.git` 
+`./setup-config.sh -r https://github.com/cory-c/TestConfig.git`
 
 Once config server is deployed and running, run the API project. The Swagger page will be availible at
 
@@ -101,6 +136,6 @@ Coming soon
 3. configure template / write instruction
 4. Deploy to kubernetes
 5. Service discovery (kubernetes)
-6. Client Code generation 
+6. Client Code generation
 7. Endpoint to return config settings
 8. Is config abstract for env? for implementation?
