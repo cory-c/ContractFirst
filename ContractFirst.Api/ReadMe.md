@@ -1,12 +1,3 @@
----
-title: Projects
-toc: true
-pannel_includes:
-- toc
-  icon: fas fa-info-circle
-  order: 2
-  mermaid: true
----
 # Contract First API Template
 
 ## API Generation
