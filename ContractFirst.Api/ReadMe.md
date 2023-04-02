@@ -1,7 +1,7 @@
 # Contract First API Template
 
 ## API Generation
-The template project enforces that the API is defined in the OpenAPI specification before code is implemented and ensures the contract is always up to date. Changing the exposed interface / contract requires updating the ServiceDefinition.yaml file first. At build time, the project reads from the ServiceDefinition.yaml file in the project root then generates request models, response models, interfaces and controller delegates for each endpoint in a single file called ControllerDelegates.cs. This file is not meant to be checked in, any changes in the ServiceDefinition.yaml are dynamically updated at build time.
+The template project enforces that the API is defined in the OpenAPI specification before any code is implemented and ensures the contract is always up to date. Changing the exposed interface / contract requires updating the ServiceDefinition.yaml file first. At build time, the project reads from the ServiceDefinition.yaml file in the project root then generates request models, response models, interfaces and controller delegates for each endpoint in a single file called ControllerDelegates.cs. This file is not meant to be checked in, any changes in the ServiceDefinition.yaml are dynamically updated at build time.
 
 ## Development Process
 
@@ -94,23 +94,30 @@ Included in the API project is a local distrobution of [Swagger UI](https://gith
 ## Distributed Tracing
 
 ## Running Locally
-Pre-Reqs, the following software needs to be installed: Java JDK, Docker, Git
 
-#### Steps to run:
+The API template can be configured to use one of several different configuration providers. 
 
-1. Build Project
-2. Open terminal, cd into /Resources/Config directory
-3. Run setup-config.sh, pass -l local file location of config or -r remote github repo
+[Spring Cloud Configuration Server](https://hub.docker.com/r/hyness/spring-cloud-config-server/)
 
-**Remote**
+A setup script in Resources/Config directly can be used to setup and run a Spring Cloud Configuration Server locally as a Docker image. The script can be configured to point to a remote bitbucket repo or a local file system. To run the script, open the terminal, cd into /Resources/Config directory.
 
-`./setup-config.sh -r https://github.com/cory-c/TestConfig.git`
+**Pointing at a remote Git repo:**
 
-**Local**
+`./setup-config.sh -r https://github.com/cory-c/TestConfig.git -p 8888`
 
-`./setup-config.sh -r https://github.com/cory-c/TestConfig.git`
+**Pointing to a local file system:**
 
-Once config server is deployed and running, run the API project. The Swagger page will be availible at
+`./setup-config.sh -r https://github.com/cory-c/TestConfig.git -p 8888`
+
+Once the configuration server is running, it can be tested by constructing the following URL with the values provided when script was run:
+
+`GET http://localhost:{PORT}/{Name of YAML file }/{BranchName}`
+
+So for the following repo https://github.com/cory-c/TestConfig/blob/master/config.yamla, I could fetch the configuration from:
+
+`GET http://localhost:8888/config/master`
+
+Once config server is deployed and running, run the API project. The Swagger page will be available at
 
 https://localhost:7143/swagger/index.html
 
