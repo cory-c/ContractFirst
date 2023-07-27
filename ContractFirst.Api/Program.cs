@@ -34,7 +34,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHealthChecks()
     .AddCheck<SampleHealthCheck>("Sample Health Check");
 
-builder.Services.AddScoped<IQuoteController, QuoteControllerImp>();
+builder.Services.AddScoped<IQuotesController, QuoteControllerImp>();
 
 // Configure app to serve ServiceDefinition.yaml static file on swagger-ui
 var app = builder.Build();

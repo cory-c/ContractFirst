@@ -1,9 +1,9 @@
 using Example.Controllers;
 namespace ContractFirst.Controllers;
 
-public class QuoteControllerImp : IQuoteController
+public class QuoteControllerImp : IQuotesController
 {
-    public Task<IEnumerable<MovieQuote>> GetQuoteAsync()
+    public Task<IEnumerable<MovieQuote>> GetQuotesAsync()
     {
         throw new NotImplementedException();
     }

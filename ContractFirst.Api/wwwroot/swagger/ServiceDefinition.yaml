@@ -12,7 +12,7 @@ info:
 host: "movie.quotes.api"
 basePath: "/v1"
 tags:
-  - name: "quote"
+  - name: "quotes"
     description: "Random movie quotes"
     externalDocs:
       description: "Find out more"
@@ -21,13 +21,13 @@ schemes:
   - "https"
   - "http"
 paths:
-  /quote:
+  /quotes:
     get:
       tags:
-        - "quote"
+        - "quotes"
       summary: "Get a random movie quote"
       description: ""
-      operationId: "getQuote"
+      operationId: "getQuotes"
       consumes:
         - "application/json"
       produces:
