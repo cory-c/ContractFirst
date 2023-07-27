@@ -15,12 +15,15 @@
         <Message Text="Project Directory = $(MSBuildProjectDirectory)" />
     </Target>
 
-    <Target Name="CopyServiceDefinitionToRoot" BeforeTargets="BeforeBuild">
-        <Copy SourceFiles="$(MSBuildThisFileDirectory)\ServiceDefinition.yaml" DestinationFiles="$(MSBuildProjectDirectory)\wwwroot\swagger\ServiceDefinition.yaml" />
+    <Target Name="CopyServiceDefinitionToRoot" BeforeTargets="Build">
+        <Copy SourceFiles="$(MSBuildThisFileDirectory)\ServiceDefinition.yaml"  SkipUnchangedFiles="false" DestinationFiles="$(MSBuildProjectDirectory)\wwwroot\swagger\ServiceDefinition.yaml" />
     </Target> 
         
-    <Target Name="NSwag" BeforeTargets="Compile" Condition=" '$(Configuration)' == 'Debug' ">
+    <Target Name="NSwag" BeforeTargets="CoreCompile" Condition=" '$(Configuration)' == 'Debug' ">
         <Exec WorkingDirectory="$(ProjectDir)" Command="$(NSwagExe_Net60) run nswag.json /variables:Configuration=$(Configuration)" />
+        <ItemGroup>
+        <Compile Include="Controllers\*.cs" Exclude="@(Compile)" />
+        </ItemGroup>
     </Target>
     
     <ItemGroup>

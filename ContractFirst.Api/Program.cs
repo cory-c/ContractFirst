@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment;
 
 // Setup configuration server
-var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+var loggerFactory = LoggerFactory.Create(loggingBuilder => loggingBuilder.AddConsole());
 var configBuilder = new ConfigurationBuilder()
     .SetBasePath(env.ContentRootPath)
     .AddJsonFile("appsetting.json", optional: true, reloadOnChange: true)
@@ -34,7 +34,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHealthChecks()
     .AddCheck<SampleHealthCheck>("Sample Health Check");
 
-builder.Services.AddScoped<IPetController, PetControllerImp>();
+builder.Services.AddScoped<IQuoteController, QuoteControllerImp>();
 
 // Configure app to serve ServiceDefinition.yaml static file on swagger-ui
 var app = builder.Build();

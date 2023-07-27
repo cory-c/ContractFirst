@@ -129,7 +129,9 @@ Coming soon
 ## Client Code Generation
 
 ## TODO
-1. Get options monitor config working
+1. model validation - if required fields are sent in (primitives OR objects) return 400 with valid error message
+2. readiness / liveliness / start-up endpoint
+2. Get options monitor config working
 2. Setup monitor admin endpoints. Update config / get config values
 3. configure template / write instruction
 4. Deploy to kubernetes
