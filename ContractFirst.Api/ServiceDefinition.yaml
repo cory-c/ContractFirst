@@ -25,11 +25,9 @@ paths:
     get:
       tags:
         - "quotes"
-      summary: "Get a random movie quote"
+      summary: "Get a popular movie quotes by movie or year"
       description: ""
-      operationId: "getQuotes"
-      consumes:
-        - "application/json"
+      operationId: "getQuotesByFilter"
       produces:
         - "application/json"
       responses:
@@ -39,6 +37,38 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/MovieQuote"
+  /quotes/{id}:
+    get:
+      tags:
+        - "quotes"
+      summary: "Get a random movie quote by id"
+      description: ""
+      operationId: "getQuotesById"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MovieQuote"
+  /quotes/random:
+    get:
+      tags:
+        - "quotes"
+      summary: "Get a random movie quote"
+      description: ""
+      operationId: "getRandomQuote"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MovieQuote"              
 definitions:
   MovieQuote:
     type: "object"
